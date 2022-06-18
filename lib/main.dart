@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-void main() => runApp(const App());
+DateTime lastMainRun = DateTime.now();
+
+void main() {
+  lastMainRun = DateTime.now();
+  runApp(const App());
+}
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -60,7 +65,13 @@ class Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(title),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(title),
+            Text(lastMainRun.toString()),
+          ],
+        ),
       ),
     );
   }
